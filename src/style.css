@@ -1,0 +1,181 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: #243247;
+  background: #f4f6fa;
+}
+a {
+  color: #365bcc;
+}
+.app {
+  min-height: 100vh;
+}
+.ant-layout-header {
+  height: 76px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  border-bottom: 1px solid #e5eaf2;
+}
+.brand {
+  font-size: 21px;
+  font-weight: 750;
+  color: #263a68;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.account {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.body {
+  display: flex;
+  max-width: 1600px;
+  width: 100%;
+  margin: auto;
+}
+aside {
+  width: 215px;
+  flex-shrink: 0;
+  padding: 32px 14px;
+}
+.ant-menu {
+  background: transparent !important;
+  border: 0 !important;
+}
+.sidebar-note {
+  padding: 32px 15px;
+  color: #8992a1;
+  font-size: 12px;
+  line-height: 1.9;
+}
+.ant-layout-content {
+  padding: 36px 36px 56px;
+  min-width: 0;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  font-weight: 650;
+  color: #6480ab;
+  margin-bottom: 13px;
+}
+.page-heading {
+  margin-bottom: 28px;
+}
+.page-heading h2 {
+  margin-top: 0 !important;
+  letter-spacing: -0.6px;
+}
+.muted {
+  color: #718096;
+  line-height: 1.8;
+}
+.small {
+  font-size: 12px;
+}
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 22px;
+  margin-top: 22px;
+}
+.time-setting {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 20px 0 30px;
+}
+.time-setting input {
+  font-size: 29px;
+  max-width: 190px;
+}
+.scope-card {
+  margin-top: 22px;
+}
+.ant-card {
+  box-shadow: 0 3px 16px #24324704;
+  border-color: #e5eaf2;
+}
+.ant-alert {
+  margin: 16px 0;
+}
+.ant-card + .ant-card {
+  margin-top: 20px;
+}
+.settings-grid .ant-card {
+  margin-top: 0;
+}
+.filters {
+  margin-bottom: 24px;
+}
+hr {
+  border: 0;
+  border-top: 1px solid #edf0f5;
+  margin: 25px 0;
+}
+.loading {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+.login {
+  max-width: 700px;
+  padding: 12vh 40px;
+  margin: auto;
+}
+.login .brand {
+  margin-bottom: 80px;
+}
+.login h1 {
+  font-size: 48px !important;
+  line-height: 1.35 !important;
+  letter-spacing: -1px;
+}
+.login p {
+  line-height: 1.9;
+  color: #718096;
+  margin: 25px 0;
+}
+.login .ant-btn {
+  margin: 18px 0;
+}
+@media (max-width: 850px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+  .body {
+    display: block;
+  }
+  aside {
+    width: 100%;
+    padding: 12px;
+  }
+  .sidebar-note {
+    display: none;
+  }
+  .ant-menu {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ant-menu-item {
+    width: auto !important;
+  }
+  .ant-layout-content {
+    padding: 20px;
+  }
+  .ant-layout-header {
+    padding: 0 20px;
+  }
+  .account > span {
+    display: none;
+  }
+  .login h1 {
+    font-size: 36px !important;
+  }
+}
