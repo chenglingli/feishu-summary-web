@@ -5,6 +5,8 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: true,
+    // Allow only this trial tunnel; keep Host checks enabled for every other domain.
+    allowedHosts: ["animal-circus-garden.ngrok-free.dev"],
     proxy: {
       "/api": "http://127.0.0.1:8000",
       "/auth": "http://127.0.0.1:8000",
