@@ -9,6 +9,7 @@ import {
   Table,
   Typography,
 } from "antd";
+import { Link } from "react-router-dom";
 import { api } from "../api/client";
 import type { Page, User } from "../api/types";
 import { date, ErrorNotice, label, Status } from "../ui";
@@ -103,6 +104,16 @@ export default function UsersPage() {
             onChange: setPage,
           }}
           columns={[
+            {
+              title: "任务",
+              render: (_, user) => (
+                <Link
+                  to={`/admin/runs?user_id=${encodeURIComponent(user.user_id)}`}
+                >
+                  查看任务
+                </Link>
+              ),
+            },
             {
               title: "用户",
               render: (_, u) => (
