@@ -10,6 +10,7 @@ import {
   Typography,
 } from "antd";
 import { Link } from "react-router-dom";
+import HealthStatus from "./HealthStatus";
 import { api } from "../api/client";
 import type { Page, User } from "../api/types";
 import { date, ErrorNotice, label, Status } from "../ui";
@@ -45,6 +46,7 @@ export default function UsersPage() {
         <Typography.Title level={2}>已接入用户</Typography.Title>
         <p className="muted">查看个人授权与计划配置。此入口仅提供查询。</p>
       </div>
+      <HealthStatus />
       <ErrorNotice error={error} />
       <Alert
         showIcon

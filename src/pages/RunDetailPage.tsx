@@ -117,7 +117,13 @@ export default function RunDetailPage({ admin = false }: { admin?: boolean }) {
             <Timeline
               items={run.steps?.map((step, i) => ({
                 key: i,
-                children: `${date(step.at)} · ${label(step.stage)}`,
+                children: `${date(step.at)} · ${label(step.stage)}${step.duration_ms == null ? "" : ` · ${(step.duration_ms / 1000).toFixed(1)} 秒`}${
+                  Object.keys(step.retry_counts ?? {}).length
+                    ? ` · 重试 ${Object.entries(step.retry_counts ?? {})
+                        .map(([key, value]) => `${key}: ${value}`)
+                        .join(" / ")}`
+                    : ""
+                }`,
               }))}
             />
           </Card>

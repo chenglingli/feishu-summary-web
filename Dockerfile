@@ -1,7 +1,7 @@
 FROM node:22.17.1-alpine AS build
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci --legacy-peer-deps
+RUN npm ci
 COPY . .
 RUN npm run build
 FROM nginx:1.28-alpine

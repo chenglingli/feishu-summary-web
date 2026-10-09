@@ -193,6 +193,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/admin/health": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Admin Health */
+        get: operations["admin_health_api_admin_health_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/admin/users": {
         parameters: {
             query?: never;
@@ -296,6 +313,12 @@ export interface components {
             /** Login Url */
             login_url: string;
         };
+        /** Envelope[HealthView] */
+        Envelope_HealthView_: {
+            data: components["schemas"]["HealthView"];
+            /** Request Id */
+            request_id: string;
+        };
         /** Envelope[LoginOptions] */
         Envelope_LoginOptions_: {
             data: components["schemas"]["LoginOptions"];
@@ -342,6 +365,23 @@ export interface components {
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
+        };
+        /** HealthView */
+        HealthView: {
+            /** Status */
+            status: string;
+            /** Maintenance */
+            maintenance: boolean;
+            /** Runner Heartbeat At */
+            runner_heartbeat_at: string | null;
+            /** Runner Lag Seconds */
+            runner_lag_seconds: number | null;
+            /** Queued */
+            queued: number;
+            /** Overdue */
+            overdue: number;
+            /** Delivery Unknown 24H */
+            delivery_unknown_24h: number;
         };
         /** LoginOptions */
         LoginOptions: {
@@ -514,6 +554,17 @@ export interface components {
             stage: string;
             /** At */
             at: string;
+            /** Finished At */
+            finished_at?: string | null;
+            /** Duration Ms */
+            duration_ms?: number | null;
+            /**
+             * Retry Counts
+             * @default {}
+             */
+            retry_counts: {
+                [key: string]: number;
+            };
         };
         /** UserView */
         UserView: {
@@ -899,6 +950,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    admin_health_api_admin_health_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_HealthView_"];
                 };
             };
         };

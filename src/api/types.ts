@@ -11,3 +11,5 @@ export type Page<T> = {
   page: number;
   page_size: number;
 };
+
+export type Health = components["schemas"]["HealthView"];

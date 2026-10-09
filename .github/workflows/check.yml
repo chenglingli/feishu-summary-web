@@ -11,3 +11,4 @@ jobs:
       - run: npm run generate:api && git diff --exit-code src/api/generated.ts
       - run: npm test
       - run: npm run build
+      - run: docker build -t feishu-summary-web:ci .

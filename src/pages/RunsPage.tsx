@@ -219,6 +219,8 @@ export default function RunsPage({ admin = false }: { admin?: boolean }) {
           )}
           {admin && (
             <Input.Search
+              key={userId}
+              defaultValue={userId}
               aria-label="按用户 ID 筛选"
               placeholder="用户 ID"
               allowClear
