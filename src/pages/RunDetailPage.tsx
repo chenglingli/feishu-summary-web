@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Card, Descriptions, Timeline, Typography, Alert } from "antd";
 import { useParams } from "react-router-dom";
 import { api } from "../api/client";
+import CollectionStatus from "./CollectionStatus";
 import type { Run } from "../api/types";
 import { date, ErrorNotice, label, Status } from "../ui";
 export default function RunDetailPage({ admin = false }: { admin?: boolean }) {
@@ -83,10 +84,12 @@ export default function RunDetailPage({ admin = false }: { admin?: boolean }) {
                 {
                   key: "count",
                   label: "采集计数",
-                  children:
-                    Object.entries(run.collection_counts ?? {})
-                      .map(([k, v]) => `${k}: ${v}`)
-                      .join(" · ") || "—",
+                  children: (
+                    <CollectionStatus
+                      counts={run.collection_counts}
+                      collecting={run.execution_status === "collecting"}
+                    />
+                  ),
                 },
                 {
                   key: "retries",
