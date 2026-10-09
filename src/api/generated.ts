@@ -261,6 +261,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/public/login-options": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Login Options */
+        get: operations["login_options_api_public_login_options_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -271,6 +288,19 @@ export interface components {
             personal: boolean;
             /** Admin */
             admin: boolean;
+        };
+        /** DemoAccount */
+        DemoAccount: {
+            /** Label */
+            label: string;
+            /** Login Url */
+            login_url: string;
+        };
+        /** Envelope[LoginOptions] */
+        Envelope_LoginOptions_: {
+            data: components["schemas"]["LoginOptions"];
+            /** Request Id */
+            request_id: string;
         };
         /** Envelope[Page[RunView]] */
         Envelope_Page_RunView__: {
@@ -312,6 +342,15 @@ export interface components {
         HTTPValidationError: {
             /** Detail */
             detail?: components["schemas"]["ValidationError"][];
+        };
+        /** LoginOptions */
+        LoginOptions: {
+            /** Demo */
+            demo: boolean;
+            /** Feishu Enabled */
+            feishu_enabled: boolean;
+            /** Accounts */
+            accounts: components["schemas"]["DemoAccount"][];
         };
         /** Page[RunView] */
         Page_RunView_: {
@@ -996,6 +1035,26 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    login_options_api_public_login_options_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Envelope_LoginOptions_"];
                 };
             };
         };

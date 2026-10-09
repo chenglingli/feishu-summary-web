@@ -26,6 +26,7 @@ import SettingsPage from "./pages/SettingsPage";
 import RunsPage from "./pages/RunsPage";
 import RunDetailPage from "./pages/RunDetailPage";
 import UsersPage from "./pages/UsersPage";
+import { LoginActions, type LoginOptions } from "./auth/LoginActions";
 import "./style.css";
 
 function App() {
@@ -33,6 +34,12 @@ function App() {
     [loading, setLoading] = useState(true),
     [error, setError] = useState("");
   const location = useLocation();
+  const [loginOptions, setLoginOptions] = useState<LoginOptions | null>(null);
+  useEffect(() => {
+    void api<LoginOptions>("/api/public/login-options")
+      .then(setLoginOptions)
+      .catch(() => setLoginOptions(null));
+  }, []);
   useEffect(() => {
     api<SessionInfo>("/api/session")
       .then((value) => {
@@ -84,9 +91,7 @@ function App() {
           要点、决定和待办，集中送达飞书。
         </p>
         {error && <Alert type="error" message={error} />}
-        <Button size="large" type="primary" href="/auth/login/start">
-          使用飞书登录
-        </Button>
+        <LoginActions options={loginOptions} />
         <p className="muted small">
           仅限公司已开放的员工使用。登录后可独立授权消息访问。
         </p>
