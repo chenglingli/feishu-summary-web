@@ -1,6 +1,11 @@
 import { Alert, Tag } from "antd";
 import { ApiError } from "./api/client";
 const labels: Record<string, string> = {
+  UNSUPPORTED_MESSAGE_TYPES: "部分消息类型暂不支持解析，未纳入总结。",
+  MESSAGE_BODY_UNAVAILABLE: "部分消息正文读取失败，未纳入总结。",
+  CONTEXT_UNAVAILABLE: "部分会话上下文读取失败，总结可能缺少背景信息。",
+  CONTEXT_LIMIT_REACHED: "部分会话的补充上下文已达到数量上限。",
+  DEMO_DATA_ONLY: "本次使用演示数据，未读取真实消息。",
   valid: "已授权",
   not_connected: "未授权",
   needs_reauth: "需重新授权",

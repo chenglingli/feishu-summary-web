@@ -113,7 +113,7 @@ export default function RunDetailPage({ admin = false }: { admin?: boolean }) {
             <Alert
               type="info"
               message="覆盖说明"
-              description={run.coverage_issues.join(" · ")}
+              description={run.coverage_issues.map(label).join(" · ")}
             />
           )}
           <Card title="执行时间线">
