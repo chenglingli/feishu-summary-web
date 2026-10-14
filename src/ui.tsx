@@ -1,6 +1,7 @@
 import { Alert, Tag } from "antd";
 import { ApiError } from "./api/client";
 const labels: Record<string, string> = {
+  SUMMARY_PARTIAL: "部分消息未完成模型总结，报告仅包含已通过校验的结果；无有效结果时会发送说明。",
   UNSUPPORTED_MESSAGE_TYPES: "部分消息类型暂不支持解析，未纳入总结。",
   MESSAGE_BODY_UNAVAILABLE: "部分消息正文读取失败，未纳入总结。",
   CONTEXT_UNAVAILABLE: "部分会话上下文读取失败，总结可能缺少背景信息。",
